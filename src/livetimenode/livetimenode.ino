@@ -277,7 +277,14 @@ void loop() {
 				state.rssiTrigger = max(state.rssiTrigger, state.rssi - settings.calibrationOffset);
 				// when calibrating, use a larger threshold
 				triggerThreshold = settings.calibrationThreshold;
-			}
+			}else{
+                              //just in case first calibration was artifically low, allow
+                              // the trigger to slide upward. note that the calibration offset
+                              // should be wide enough to ensure passes dont get missed
+                              if (state.rssiTrigger < state.rssi - settings.calibrationOffset){
+                                 state.rssiTrigger = state.rssi - settings.calibrationOffset;
+                              }
+                        }
 
 			state.rssiPeak = max(state.rssiPeak, state.rssi);
 
