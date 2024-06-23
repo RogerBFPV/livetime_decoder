@@ -112,7 +112,7 @@ sudo python setup.py install
 Clone or download this repo to '/home/pi/' on the Raspberry Pi.
 ```
 cd ~
-git clone https://github.com/scottgchin/livetime_decoder.git
+git clone https://github.com/RogerBFPV/livetime_decoder.git
 ```
 
 System update and upgrade.
