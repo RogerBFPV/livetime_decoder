@@ -21,10 +21,10 @@ Note that the passing time is taken when the RSSI has reached it peak (when the 
 
 ### Tuning
 
-##### Calibration Offset: default 95
-If you are missing some passes, it means the Calibration Offset value is too small and the quad is not reaching as high a peak RSSI value as was seen on the first pass. Increase Calibration Offset to ensure all laps are captured.
+##### Calibration Offset: default 35 
+If you are missing some passes, it means the Calibration Offset value is too small and the quad is not reaching as high a peak RSSI value as was seen on the first pass. Increase Calibration Offset to ensure all laps are captured. Larger gates may require larger values.
 
-##### Calibration Threshold: default 8
+##### Calibration Threshold: default 95 
 Adds a buffer around the fluctuating RSSI value during the first pass. Increase the value if you are getting lower than expected trigger values because the fist pass has been triggered before actually crossing the gate. If you are not getting a pass record for the fist pass (and likely ever), decrease this value. A relatively large value is needed to avoid false positives because of noise in the RSSI signal.
 
 ##### Trigger Threshold: default 70

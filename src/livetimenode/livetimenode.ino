@@ -56,7 +56,7 @@ const int spiClockPin = 13;
 struct {
 	uint16_t volatile vtxFreq = 5800;
 	// Subtracted from the peak rssi during a calibration pass to determine the trigger value
-	uint16_t volatile calibrationOffset = 8;
+	uint16_t volatile calibrationOffset = 35;
 	// Rssi must fall below trigger - settings.calibrationThreshold to end a calibration pass
 	uint16_t volatile calibrationThreshold = 95; // Rssi must fall below trigger - settings.triggerThreshold to end a normal pass
 	uint16_t volatile triggerThreshold = 70;
