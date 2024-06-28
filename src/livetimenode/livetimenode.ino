@@ -240,7 +240,13 @@ void setRxModule(int frequency) {
 
 // Read the RSSI value for the current channel
 int rssiRead() {
-	return analogRead(0);
+    // reads 5V value as 0-1023, RX5808 is 3.3V powered so RSSI pin will never output the full range
+    int raw = analogRead(0);
+    // clamp upper range to fit scaling
+    if (raw > 0x01FF)
+        raw = 0x01FF;
+    // rescale to fit into a byte and remove some jitter 
+    return raw >> 1;
 }
 
 // Main loop
@@ -260,6 +266,7 @@ void loop() {
 		if (!state.crossing && state.rssi > state.rssiTrigger) {
 			state.crossing = true; // Quad is going through the gate
 			Serial.println("Crossing = True");
+      digitalWrite(13,HIGH);
 		}
 
 		// Find the peak rssi and the time it occured during a crossing event
@@ -302,6 +309,7 @@ void loop() {
 				state.calibrationMode = false;
 				state.rssiPeakRaw = 0;
 				state.rssiPeak = 0;
+        digitalWrite(13,LOW);
 			}
 		}
 	}
